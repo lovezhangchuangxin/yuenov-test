@@ -2,7 +2,7 @@
   "name": "react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --entry ./src/index.tsx --output-path ./build"
@@ -25,6 +25,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^4.3.6",
@@ -33,7 +34,10 @@
     "lint-staged": "^10.5.3",
     "postcss-loader": "^6.2.1",
     "postcss-preset-env": "^7.0.1",
+    "prettier": "^2.5.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",
@@ -46,9 +50,21 @@
     "react-dom": "^17.0.2",
     "regenerator-runtime": "^0.13.9"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,less}": [
+        "prettier --write"
+    ],
+    "src/**/*.{js,ts,tsx}": [
+        "eslint --fix"
+    ],
+    "src/**/*.{css,less}": [
+        "stylelint --fix"
+    ]
+  },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   }
 }
