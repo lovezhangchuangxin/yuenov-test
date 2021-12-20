@@ -3,76 +3,71 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: "development",
-    entry: "./src/index.tsx",
+    mode: 'development',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: "build.js"
+        filename: 'build.js',
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.less$/,
                 use: [
                     {
-                        loader: "style-loader"
+                        loader: 'style-loader',
                     },
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             importLoaders: 1,
-                            esModule: false
-                        }
+                            esModule: false,
+                        },
                     },
                     {
-                        loader: "postcss-loader"
+                        loader: 'postcss-loader',
                     },
                     {
-                        loader: "less-loader"
-                    }
-                ]
+                        loader: 'less-loader',
+                    },
+                ],
             },
             {
                 test: /\.(png|gif|svg|jpe?g)$/,
                 type: 'asset',
                 generator: {
-                    filename: 'img/[name].[hash:6][ext]'
+                    filename: 'img/[name].[hash:6][ext]',
                 },
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 500 * 1024
-                    }
-                }
+                        maxSize: 500 * 1024,
+                    },
+                },
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                ]
+                use: ['babel-loader'],
             },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                    'ts-loader'
-                ]
-            }
-        ]
+                use: ['babel-loader', 'ts-loader'],
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'hexiechuangxin',
-            template: './public/index.html'
-        })
-    ]
-}
+            template: './public/index.html',
+        }),
+    ],
+};

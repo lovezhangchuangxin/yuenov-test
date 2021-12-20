@@ -15,6 +15,7 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
+    "@babel/runtime-corejs3": "^7.16.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^13.2.0",
     "@types/react": "^17.0.37",
@@ -52,13 +53,13 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,less}": [
-        "prettier --write"
+      "prettier --write"
     ],
     "src/**/*.{js,ts,tsx}": [
-        "eslint --fix"
+      "eslint --fix"
     ],
     "src/**/*.{css,less}": [
-        "stylelint --fix"
+      "stylelint --fix"
     ]
   },
   "husky": {

@@ -1,10 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { TestComponent } from './js/demo';
 
-function A() {
-    return <h1>123</h1>;
-}
-
-console.log('leoafs');
-
-ReactDOM.render(<A />, document.getElementById('root'));
+ReactDOM.render(<TestComponent />, document.getElementById('root'));
