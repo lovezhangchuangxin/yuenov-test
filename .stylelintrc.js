@@ -3,5 +3,6 @@ module.exports = {
     rules: {
         // style 文件也是 4 格缩进
         indentation: 4,
+        "selector-class-pattern":null
     },
 };

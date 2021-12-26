@@ -1,5 +1,38 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TestComponent } from './js/demo';
+import { PageMain } from './js/pageMain';
+import { BookShelf } from './js/BookShelf';
+import { BookSearch } from './js/BookSearch';
+import { BookStore } from './js/BookStore';
+import { BookRead } from './js/BookRead';
+import { BookContent } from './js/BookContent';
+import './css/index.css';
+import { BrowserRouter, Router, Route, Routes, Link, HashRouter } from 'react-router-dom';
+if (localStorage.getItem('history') == null) {
+    localStorage.setItem('history', JSON.stringify([]));
+}
+class Main extends React.Component {
+    render() {
+        return (
+            <>
+                <PageMain />
+                <BookShelf />
+                <BookSearch />
+                <BookStore />
+            </>
+        );
+    }
+}
 
-ReactDOM.render(<TestComponent />, document.getElementById('root'));
+ReactDOM.render(
+    <div>
+        <HashRouter>
+            <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/bookread" element={<BookRead />} />
+                <Route path="/bookcontent" element={<BookContent />} />
+            </Routes>
+        </HashRouter>
+    </div>,
+    document.getElementById('root'),
+);
