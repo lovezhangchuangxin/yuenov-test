@@ -27,6 +27,7 @@ class BookShelf extends Component {
                 },
             })
                 .then((value) => {
+                    alert('success!');
                     contents += `
             <div class="book" data-bookid=${value.data.data.bookId}>
             <img class="cover" src="${'http://pt.yuenov.com:15555' + value.data.data.coverImg}"></img>

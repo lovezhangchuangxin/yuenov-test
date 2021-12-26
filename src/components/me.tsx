@@ -13,10 +13,12 @@ function Me() {
             {toast ? <Toast /> : null}
             <div className="container">
                 <h1 id="title">我的</h1>
-                <div style={{ display: 'flex', justifyContent: 'center' }}><GetId/></div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <GetId />
+                </div>
                 <div className="records">
                     <h2>浏览记录</h2>
-                    <getRecords/>
+                    <GetRecords />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <h1>意见反馈:</h1>

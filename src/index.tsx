@@ -9,10 +9,19 @@ import { BookContent } from './js/BookContent';
 import { Me } from './components/me';
 import './css/index.css';
 import { BrowserRouter, Router, Route, Routes, Link, HashRouter } from 'react-router-dom';
+import axios from 'axios';
 if (localStorage.getItem('history') == null) {
     localStorage.setItem('history', JSON.stringify([]));
 }
 class Main extends React.Component {
+    componentDidMount() {
+        axios({
+            method: 'GET',
+            url: 'http://www.hexiechuangxin.com/getId',
+        }).then((value) => {
+            localStorage.setItem('id', value.data.data.id);
+        });
+    }
     render() {
         return (
             <>
