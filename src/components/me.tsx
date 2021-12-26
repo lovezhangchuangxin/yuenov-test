@@ -44,7 +44,7 @@ const Submit = function Submit(props: any) {
     const content = props.text;
     axios({
         method: 'POST',
-        url: '/getRecord',
+        url: 'http://www.hexiechuangxin.com/suggest',
         params: {
             id: Number(localStorage.getItem('id')),
             msg: content,
