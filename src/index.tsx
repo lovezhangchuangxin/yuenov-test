@@ -6,6 +6,7 @@ import { BookSearch } from './js/BookSearch';
 import { BookStore } from './js/BookStore';
 import { BookRead } from './js/BookRead';
 import { BookContent } from './js/BookContent';
+import { Me } from './components/me';
 import './css/index.css';
 import { BrowserRouter, Router, Route, Routes, Link, HashRouter } from 'react-router-dom';
 if (localStorage.getItem('history') == null) {
@@ -31,6 +32,7 @@ ReactDOM.render(
                 <Route path="/" element={<Main />} />
                 <Route path="/bookread" element={<BookRead />} />
                 <Route path="/bookcontent" element={<BookContent />} />
+                <Route path="/me" element={<Me />} />
             </Routes>
         </HashRouter>
     </div>,

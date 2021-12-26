@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: #fff;
+    font-size: 16px;
+}
+
+#discoveryContent {
+    margin: 20px auto;
+    width: 70%;
+}
+
+#discoveryContent ul li {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#discoveryContent ul li .left {
+    width: 100px;
+    margin-right: 20px;
+}
+
+#discoveryContent ul li .left img {
+    width: 100px;
+}
+
+#discoveryContent ul li .right .title {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+#discoveryContent ul li .right .author {
+    margin: 5px 0;
+    font-size: 16px;
+    color: grey;
+}
+
+#discoveryContent ul li .right .desc {
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+#discoveryContent ul li .right .clearInfo span {
+    padding: 0 6px;
+    font-size: 13px;
+    color: rgb(78, 78, 78);
+    border: 1px solid grey;
+    border-radius: 5px;
+}

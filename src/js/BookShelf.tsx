@@ -39,7 +39,7 @@ class BookShelf extends Component {
             </div>
     </div>
             `;
-                    alert('历史记录请求成功!');
+
                     document.getElementById('historyBook')!.innerHTML += contents;
                 })
                 .catch((reason) => {

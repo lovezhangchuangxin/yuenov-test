@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/content.css">
+</head>
+
+<body>
+    <h1></h1>
+
+    <section id="content">
+        <ul>
+        </ul>
+    </section>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        axios.defaults.baseURL = 'http://yuenov.com:15555';
+
+        let url_query = location.href.split('?')[1].split('&');
+        let h1 = document.querySelector('h1');
+        let ul = document.querySelector('ul');
+        let bookId = Number(url_query[0].split('=')[1]);
+        let chapterId = url_query[1].split('=')[1];
+        let v = Number(url_query[2].split('=')[1]);
+
+        axios({
+            method: "POST",
+            url: '/app/open/api/chapter/get',
+            data: {
+                bookId: bookId,
+                chapterIdList: [chapterId],
+                v: v
+            }
+        }).then(value => {
+            console.log(value.data);
+            let list = value.data.data.list[0];
+            h1.innerHTML = list.name;
+            let lis = '';
+            let contents = list.content.split('\n');
+            contents.forEach(item => {
+                lis += `
+                    <li>
+                        <p>${item}</p>    
+                    </li>
+                `;
+            })
+            ul.innerHTML = lis;
+
+        }).catch(reason => {
+            console.log(reason);
+        })
+
+    </script>
+</body>
+
+</html>

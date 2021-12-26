@@ -22,7 +22,9 @@ class PageMain extends Component {
                     </div>
                     <div className="chooseBtn">发现</div>
                     <div className="chooseBtn">书城(未做完)</div>
-                    <div className="chooseBtn">我的</div>
+                    <Link to="/me" className="chooseBtn">
+                        我的
+                    </Link>
                 </div>
                 <footer className="intro">小说汇--一个轻量级的小说阅读网站</footer>
             </div>
