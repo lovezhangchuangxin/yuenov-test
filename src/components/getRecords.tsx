@@ -23,7 +23,7 @@ export class getRecords extends React.Component {
         const _this = this;
         axios({
             method: 'GET',
-            url: '/getRecord',
+            url: 'http://www.hexiechuangxin.com/getRecord',
             params: {
                 id: userId,
             },
