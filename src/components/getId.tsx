@@ -5,10 +5,10 @@ type StateType = {
     isLoaded: boolean;
 };
 
-export interface getId {
+export interface GetId {
     state: StateType;
 }
-export class getId extends React.Component {
+export class GetId extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
