@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <section id="discoveryContent">
+        <ul>
+
+        </ul>
+    </section>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        axios.defaults.baseURL = 'http://yuenov.com:15555';
+        
+        let content_ul = document.getElementById('discoveryContent').querySelector('ul');
+                axios({
+                    method: "GET",
+                    url: '/app/open/api/category/discovery',
+                    params: {
+                    }
+                }).then(value => {
+                    console.log(value.data);
+                    let list = value.data.data.list;
+                    let contents = '';
+                    list.forEach(item => {
+                        contents += `
+                        <h1 align="center">${item.categoryName}</h1>
+                        <hr />`
+                        let books = item.bookList
+                        books.forEach(item => {
+                            contents += `
+                                <li data-bookid=${item.bookId}>
+                                    <div class="left">
+                                        <img src="${'http://pt.yuenov.com:15555' + item.coverImg}"
+                                            alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2 class="title">${item.title}</h2>
+                                        <h3 class="author">${item.author}</h3>
+                                        <p class="desc">
+                                            ${item.desc}
+                                        </p>
+                                        <div class="clearInfo">
+                                            <span>${item.chapterStatus}</span>
+                                            <span>${item.word}</span>
+                                            <span>${item.categoryName}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                        })
+                    });
+
+                    content_ul.innerHTML = contents;
+
+                    let content_lis = content_ul.querySelectorAll('li');
+                    content_lis.forEach(book => {
+                        book.addEventListener('click', () => {
+                            let bookId = book.dataset.bookid;
+                            location.href = `./bookInfor.html?bookId=${bookId}`;
+                        });
+                    })
+
+                }).catch(reason => {
+                    alert('查找失败!');
+                    console.log(reason);
+                    alert(reason);
+                })
+
+    </script>
+    
+</body>
+
+</html>

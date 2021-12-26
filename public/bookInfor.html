@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bookInfor.css">
+</head>
+
+<body>
+
+    <h1></h1>
+    <section id="chapters_ssection">
+        <ul>
+        </ul>
+    </section>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        chapterIds = null;
+
+        axios.defaults.baseURL = 'http://yuenov.com:17777';
+        axios.defaults.transformResponse = [(function (data) {
+            chapterIds = data.match(/(\d{19})/gm);
+            return JSON.parse(data);
+        })];
+
+        let bookId = Number(location.href.split('?')[1].split('=')[1]);
+        let ul = document.querySelector('ul');
+        let h1 = document.querySelector('h1');
+
+        axios({
+            method: "GET",
+            url: '/app/open/api/chapter/getByBookId',
+            params: {
+                bookId: bookId,
+            }
+        }).then(value => {
+            h1.innerHTML = value.data.data.title;
+            let chapters = value.data.data.chapters;
+            let lis = '';
+            chapters.forEach((chapter, index) => {
+                lis += `
+                    <li>
+                        <p>
+                            <a href="${'content.html?bookId=' + bookId + '&id=' + chapterIds[index] + '&v=' + chapter.v}">
+                                ${chapter.name}
+                            </a>
+                        </p>
+                    </li>
+                `;
+            })
+            ul.innerHTML = lis;
+
+        }).catch(reason => {
+            console.log(reason);
+            alert('请求失败,请稍后再试');
+        })
+
+    </script>
+</body>
+
+</html>
