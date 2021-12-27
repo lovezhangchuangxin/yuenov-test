@@ -4,6 +4,7 @@ import { Input } from './report';
 import { Toast } from './toast';
 import { GetRecords } from './getRecords';
 import axios from 'axios'; // 引入axios库
+import './me.less';
 function Me() {
     const [text, setText] = useState('');
     const [toast, setToast] = useState(false);
