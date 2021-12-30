@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://yuenov.com:15555';
+axios.defaults.baseURL = '//yuenov.com:15555';
 class BookContent extends Component {
     componentDidMount() {
         const url_query = location.href.split('?')[1].split('&');

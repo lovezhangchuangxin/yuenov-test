@@ -3,7 +3,7 @@ let bookshelf: HTMLDivElement;
 let bookStore: HTMLDivElement;
 let bookSearch: HTMLDivElement;
 import axios from 'axios';
-axios.defaults.baseURL = 'http://yuenov.com:15555';
+axios.defaults.baseURL = '//yuenov.com:15555';
 function search() {
     container.style.display = 'none';
     bookshelf.style.display = 'none';
@@ -27,7 +27,7 @@ function search() {
                 list.forEach((item) => {
                     contents += `
                     <div class="book" data-bookid=${item.bookId}>
-                            <img class="cover" src="${'http://pt.yuenov.com:15555' + item.coverImg}"></img>
+                            <img class="cover" src="${'//pt.yuenov.com:15555' + item.coverImg}"></img>
                             <div class="bookIntro">
                                 <h3 class="title">${item.title}</h3>
                                 <h4 class="author">${item.author}</h4>

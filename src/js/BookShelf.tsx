@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './func';
 import { containerLoad, bookshelfLoad, bookstoreLoad, func_init } from './func';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://yuenov.com:17777';
+axios.defaults.baseURL = '//yuenov.com:17777';
 
 class BookShelf extends Component {
     // constructor(props) {
@@ -30,7 +30,7 @@ class BookShelf extends Component {
                     alert('success!');
                     contents += `
             <div class="book" data-bookid=${value.data.data.bookId}>
-            <img class="cover" src="${'http://pt.yuenov.com:15555' + value.data.data.coverImg}"></img>
+            <img class="cover" src="${'//pt.yuenov.com:15555' + value.data.data.coverImg}"></img>
             <div class="bookIntro">
                 <h3 class="title">${value.data.data.title}</h3>
                 <h4 class="author">${value.data.data.author}</h4>

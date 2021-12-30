@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://yuenov.com:17777';
+axios.defaults.baseURL = '//yuenov.com:17777';
 let chapterIds: string[];
 axios.defaults.transformResponse = [
     function (data) {
